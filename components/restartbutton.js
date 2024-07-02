@@ -8,7 +8,7 @@ export class restartbutton {
     }
 
     create(){
-        this.startButton= this.releatedScene.add.image (667, 375, "button").setScale(4).setInteractive()
+        this.startButton= this.releatedScene.add.image (340, 667, "button").setScale(4).setInteractive()
         
 
         this.startButton.on ("pointerdown",()=>{ 

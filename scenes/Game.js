@@ -21,6 +21,7 @@ export default class Game extends Phaser.Scene {
       this.load.image("enemigo", "public/assets/enemigo.png");
       this.load.image("hamburguesa", "public/assets/comidaGalactica.png");
       this.load.image("estrella", "public/assets/estrella.png");
+      this.load.audio("music", "public/assets/sounds/music.mp3");
     }
   
     create() {
@@ -74,6 +75,9 @@ export default class Game extends Phaser.Scene {
       // Configura las colisiones entre el jugador y recolectables/enemigos
       this.physics.add.collider(this.player, this.recolectables, this.onShapeCollect, null, this);
       this.physics.add.collider(this.player, this.enemigos, this.onShapemort, null, this);
+
+      this.music = this.sound.add("music");
+      this.music.play();
     }
   
     update() {
@@ -124,7 +128,7 @@ export default class Game extends Phaser.Scene {
         tipo
       );
       enemigos.setVelocity(0, 100);
-      enemigos.setSize(enemigos.width * 0.2, enemigos.height * 0.2).setScale(4);
+      enemigos.setSize(enemigos.width * 0.5, enemigos.height * 0.5).setScale(4);
     }
   
     onShapeCollect(player, recolectables) {
@@ -150,6 +154,7 @@ export default class Game extends Phaser.Scene {
   
     onShapemort() {
       this.scene.start("End");
+      this.music.stop();
     }
   
     updateTimer() {
@@ -164,5 +169,6 @@ export default class Game extends Phaser.Scene {
   
     showEnd() {
       this.scene.start("End");
+      this.music.stop();
     }
   }
