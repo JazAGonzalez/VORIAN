@@ -43,13 +43,13 @@ export default class Game extends Phaser.Scene {
   
       // Configura temporizadores para generar recolectables y enemigos, y para el temporizador del juego
       this.time.addEvent({
-        delay: 2000,
+        delay: 1000,
         callback: this.onrecolect,
         callbackScope: this,
         loop: true,
       });
       this.time.addEvent({
-        delay: 5000,
+        delay: 3000,
         callback: this.onenemy,
         callbackScope: this,
         loop: true,
@@ -88,13 +88,13 @@ export default class Game extends Phaser.Scene {
   
       // Maneja el movimiento del jugador
       if (this.cursor.left.isDown) {
-        this.player.setVelocityX(-160);
+        this.player.setVelocityX(-250);
         this.player.setScale(-1,1);
         this.player.body.offset.x = 220;
         this.player.anims.play("left", true);
   
       } else if (this.cursor.right.isDown) {
-        this.player.setVelocityX(160);
+        this.player.setVelocityX(250);
         this.player.setScale(1,1);
         this.player.body.offset.x = 75;
         this.player.anims.play("right", true);
@@ -112,7 +112,7 @@ export default class Game extends Phaser.Scene {
         0,
         tipo
       );
-      recolectables.setVelocity(0, 100);
+      recolectables.setVelocity(0, 500);
       recolectables.setSize(recolectables.width * 0.2, recolectables.height * 0.2).setScale(2.5);
   
       recolectables.setData("points", this.shapes[tipo].points);
@@ -127,7 +127,7 @@ export default class Game extends Phaser.Scene {
         0,
         tipo
       );
-      enemigos.setVelocity(0, 100);
+      enemigos.setVelocity(0, 300);
       enemigos.setSize(enemigos.width * 0.5, enemigos.height * 0.5).setScale(4);
     }
   
