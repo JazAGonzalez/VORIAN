@@ -21,7 +21,6 @@ export default class Game extends Phaser.Scene {
       this.load.image("enemigo", "public/assets/enemigo.png");
       this.load.image("hamburguesa", "public/assets/comidaGalactica.png");
       this.load.image("estrella", "public/assets/estrella.png");
-      //this.load.audio("music", "public/assets/sounds/music.mp3");
       this.load.audio("coin","public/assets/sounds/coin.mp3");
       this.load.audio("bomb","public/assets/sounds/bomb.mp3");
       this.load.audio("music","public/assets/sounds/soundgame.mp3");
@@ -33,7 +32,7 @@ export default class Game extends Phaser.Scene {
   
       // Agrega el sprite del jugador
       this.player = this.physics.add.sprite(400, 1100, "personaje");
-      this.player.setSize(this.player.width * 0.5, this.player.height * 1);
+      this.player.setSize(this.player.width * 0.5, this.player.height * 1,);
       this.player.setCollideWorldBounds(true);
   
       // Configura los controles de entrada
