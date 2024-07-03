@@ -8,6 +8,7 @@ export default class End extends Phaser.Scene {
       preload(){
         this.load.image("background", "public/assets/fondo.png");
         this.load.image("gameover", "public/assets/GAMEOVER.png");
+        this.load.audio("musicend","public/assets/sounds/soundend.mp3");
         this.restartbutton.preload();
       }
       create() {
@@ -17,6 +18,7 @@ export default class End extends Phaser.Scene {
 
         this.gameover=this.add.image(430,500, "gameover").setScale(5);
 
+        this.scene.get("Menu").soundmenu.play();
       }
       
 }

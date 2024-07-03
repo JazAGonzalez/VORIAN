@@ -8,6 +8,7 @@ export default class Menu extends Phaser.Scene {
       preload(){
         this.load.image("background", "public/assets/fondo.png");
         this.load.image("titulo", "public/assets/titulo.png");
+        this.load.audio("musica","public/assets/sounds/soundend.mp3");
         
         this.restartbutton.preload();
       }
@@ -18,6 +19,9 @@ export default class Menu extends Phaser.Scene {
       
 
         this.titulo=this.add.image(380,600, "titulo").setScale(5);
+
+        this.soundmenu= this.sound.add("musica");
+        this.soundmenu.play();
       }
       
 }

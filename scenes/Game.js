@@ -21,7 +21,10 @@ export default class Game extends Phaser.Scene {
       this.load.image("enemigo", "public/assets/enemigo.png");
       this.load.image("hamburguesa", "public/assets/comidaGalactica.png");
       this.load.image("estrella", "public/assets/estrella.png");
-      this.load.audio("music", "public/assets/sounds/music.mp3");
+      //this.load.audio("music", "public/assets/sounds/music.mp3");
+      this.load.audio("coin","public/assets/sounds/coin.mp3");
+      this.load.audio("bomb","public/assets/sounds/bomb.mp3");
+      this.load.audio("music","public/assets/sounds/soundgame.mp3");
     }
   
     create() {
@@ -49,7 +52,7 @@ export default class Game extends Phaser.Scene {
         loop: true,
       });
       this.time.addEvent({
-        delay: 3000,
+        delay: 2000,
         callback: this.onenemy,
         callbackScope: this,
         loop: true,
@@ -78,6 +81,10 @@ export default class Game extends Phaser.Scene {
 
       this.music = this.sound.add("music");
       this.music.play();
+      this.collect= this.sound.add("coin");
+      this.explosion= this.sound.add("bomb");
+      this.scene.get("Menu").soundmenu.pause();
+
     }
   
     update() {
@@ -146,6 +153,8 @@ export default class Game extends Phaser.Scene {
       if (nombreFig === "hamburguesa") {
         this.sumarTiempo();
       }
+
+      this.collect.play();
   
       recolectables.destroy();
   
@@ -153,6 +162,7 @@ export default class Game extends Phaser.Scene {
     }
   
     onShapemort() {
+      this.explosion.play();
       this.scene.start("End");
       this.music.stop();
     }
